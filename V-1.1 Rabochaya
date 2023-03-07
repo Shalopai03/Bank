@@ -1,0 +1,64 @@
+//Ocnovnoi class bank
+
+public class Bank {
+        public static void main(String[] args) {
+
+                Sber a = new Sber(300);
+                a.add(200);
+
+                Cred b = new Cred(-20);
+                b.pay(30);
+                b.pay(10);
+
+                Ras c = new Ras(10);
+                c.pay(100);
+                c.add(200);
+                c.pay(50);
+
+        }
+}
+
+// Sberegatelni chet class
+
+class Sber {
+        int balance;
+        Sber(int a){
+        if (a>0) balance = a; else balance=0;
+        }
+        void add(int nn){
+            balance = balance + nn;
+        }
+}
+
+// Creditni chet class
+
+public class Cred extends Sber{
+
+    Cred (int y) {
+        super(y);
+        if (y<0) balance = y; else balance = 0;
+    }
+
+    public void pay(int h){
+        if (h>0) balance = balance - h; else System.out.println("Отказ");
+    }
+}
+
+// Raschetni chet class
+
+public class Ras extends Sber{
+    int balance;
+    Ras(int o)
+        {
+            super(o);
+        if (o>0) balance = o; else balance=0;
+    }
+    void add(int q) {
+        balance = balance + q;
+
+    }
+    public void pay(int f){
+
+        if (balance>f) balance = balance-f; else System.out.println("Отказ");
+    }
+}
